@@ -47,6 +47,32 @@ local config = {
       },
     },
   },
+
+  polish = function()
+    -- QuickFix only: 'o' will open the qf location under the cursor, but keep the qf list focused
+    -- TODO: Don't open new tab
+    local quickfixGroup = vim.api.nvim_create_augroup("QuickFix", { clear = true })
+    vim.api.nvim_create_autocmd("FileType", {
+      group = quickfixGroup,
+      pattern = { "qf" },
+      callback = function()
+        vim.api.nvim_buf_set_keymap(0, 'n', 'o', '<CR><C-W>p', { noremap = true, silent = true })
+      end,
+    })
+
+    -- Set up custom filetypes
+    -- vim.filetype.add {
+    --   extension = {
+    --     foo = "fooscript",
+    --   },
+    --   filename = {
+    --     ["Foofile"] = "fooscript",
+    --   },
+    --   pattern = {
+    --     ["~/%.config/foo/.*"] = "fooscript",
+    --   },
+    -- }
+  end,
 }
 
 return config
