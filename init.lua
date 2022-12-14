@@ -48,6 +48,11 @@ local config = {
       },
       { "stefandtw/quickfix-reflector.vim" },
     },
+
+    ["which-key"] = function(config)
+      config.plugins.registers = false
+      return config
+    end,
   },
 
   polish = function()
