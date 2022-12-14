@@ -1,6 +1,7 @@
 local config = {
   options = {
     opt = {
+      clipboard = "",
       scrolloff = 5,
     },
     g = {
